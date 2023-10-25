@@ -1,0 +1,79 @@
+@model InduMovel.Models.Movel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Movel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MovelId" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cor" class="control-label"></label>
+                <input asp-for="Cor" class="form-control" />
+                <span asp-validation-for="Cor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ImagemAtual">Imagem Atual</label>
+                <img src="@Model.ImagemUrl" alt="Imagem do Produto Atual" asp-append-version="true">
+                <input type="hidden" name="ImagemUrl" value="@Model.ImagemUrl">
+            </div>
+            <div class="form-group">
+                <label for="Imagem">Nova Imagem:</label>
+                <input type="file" class="form-control" name="Imagem" id="Imagem">
+            </div>
+            <div class="form-group">
+                <label for="ImagemAtualc">Imagem Atual curta</label>
+                <img src="@Model.ImagemCurta" alt="Imagem do Produto Atual" asp-append-version="true">
+                <input type="hidden" name="ImagemCurta" value="@Model.ImagemCurta">
+            </div>
+            <div class="form-group">
+                <label for="Imagemcurta">Nova Imagem curta:</label>
+                <input type="file" class="form-control" name="Imagemcurta" id="Imagemcurta" asp-append-version="true">
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EmProducao" /> @Html.DisplayNameFor(model => model.EmProducao)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Promocao" /> @Html.DisplayNameFor(model => model.Promocao)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
